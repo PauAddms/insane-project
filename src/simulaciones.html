@@ -34,6 +34,70 @@
     <iframe src="https://www.geogebra.org/classic/nv3yevxy?embed" width="800" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
   </section>
 
+ <canvas id="canvas" width="600" height="400"></canvas>
+  <script>
+    // Definición de parámetros
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width;
+    const height = canvas.height;
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const amplitude = 50; // Amplitud de la onda
+    const frequency = 0.02; // Frecuencia de la onda
+    const phaseShift = Math.PI / 2; // Desplazamiento de fase para polarización
+    const waveSpeed = 0.3; // Velocidad de propagación de la onda
+
+    // Función para dibujar la onda gravitacional y sus polarizaciones
+    function drawWave(t) {
+        ctx.clearRect(0, 0, width, height);
+      
+      // Dibujar el marco de referencia
+      ctx.beginPath();
+      ctx.moveTo(0, centerY);
+      ctx.lineTo(width, centerY);
+      ctx.moveTo(centerX, 0);
+      ctx.lineTo(centerX, height);
+      ctx.strokeStyle = 'gray';
+      ctx.stroke();
+
+        // Dibujar la onda gravitacional
+        ctx.beginPath();
+        ctx.moveTo(0, centerY);
+        for (let x = 0; x < width; x++) {
+            const y = centerY + amplitude * Math.sin(frequency * x - waveSpeed * t);
+            ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = 'blue';
+        ctx.stroke();
+
+        // Dibujar la polarización horizontal
+        ctx.beginPath();
+        ctx.moveTo(centerX - 30, centerY - 30);
+        ctx.lineTo(centerX + 30, centerY + 30);
+        ctx.strokeStyle = 'red';
+        ctx.stroke();
+
+        // Dibujar la polarización vertical
+        ctx.beginPath();
+        ctx.moveTo(centerX - 30, centerY + 30);
+        ctx.lineTo(centerX + 30, centerY - 30);
+        ctx.strokeStyle = 'green';
+        ctx.stroke();
+    }
+
+    // Animación de la onda gravitacional y sus polarizaciones
+    let time = 0;
+    function animate() {
+        requestAnimationFrame(animate);
+        drawWave(time);
+        time += 0.1;
+    }
+
+    animate();
+
+  </script>    
+
       
     </main>
   </body>
