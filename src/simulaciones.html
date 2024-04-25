@@ -28,7 +28,8 @@
 
 <img src="0001-0200.mp4>
         
-      </section>
+  
+       </section>
 
        <section> 
 <canvas id="canvas" width="600" height="400"></canvas>
@@ -44,7 +45,6 @@
     const frequency = 0.02; // Frecuencia de la onda
     const phaseShift = Math.PI / 2; // Desplazamiento de fase para polarización
     const waveSpeed = 0.3; // Velocidad de propagación de la onda
-
     // Función para dibujar la onda gravitacional y sus polarizaciones
     function drawWave(t) {
         ctx.clearRect(0, 0, width, height);
@@ -57,7 +57,6 @@
       ctx.lineTo(centerX, height);
       ctx.strokeStyle = 'gray';
       ctx.stroke();
-
         // Dibujar la onda gravitacional
         ctx.beginPath();
         ctx.moveTo(0, centerY);
@@ -67,14 +66,12 @@
         }
         ctx.strokeStyle = 'blue';
         ctx.stroke();
-
         // Dibujar la polarización horizontal
         ctx.beginPath();
         ctx.moveTo(centerX - 30, centerY - 30);
         ctx.lineTo(centerX + 30, centerY + 30);
         ctx.strokeStyle = 'red';
         ctx.stroke();
-
         // Dibujar la polarización vertical
         ctx.beginPath();
         ctx.moveTo(centerX - 30, centerY + 30);
@@ -82,7 +79,6 @@
         ctx.strokeStyle = 'green';
         ctx.stroke();
     }
-
     // Animación de la onda gravitacional y sus polarizaciones
     let time = 0;
     function animate() {
@@ -91,9 +87,8 @@
         time += 0.1;
     }
     animate();
+  </script>  
 
-  </script>   
-         
         <p>
   La animación representa una onda gravitacional en un espacio bidimensional, junto con dos polarizaciones perpendiculares. Aquí hay una descripción teórica de cada elemento:
        </p>
